@@ -19,6 +19,17 @@ const findWalker = (pet, allWalker) => {
     return petWalker
 }
 
+const findCity = (walker, allCities) => {
+    let walkerCity = null
+
+    for (const city of allCities) {
+        if (city.id === walker.cityId) {
+            walkerCity = city
+        }
+    }
+
+    return walkerCity
+}
 
 export const Assignments = () => {
     let assignmentHTML = ""
@@ -26,10 +37,11 @@ export const Assignments = () => {
 
     for (const currentPet of pets) {
         const currentPetWalker = findWalker(currentPet, walkers)
+        const walkerCurrentCity = findCity(currentPetWalker, cities)
         assignmentHTML += `
             <li>
                 ${currentPet.name} is being walked by
-                ${currentPetWalker.name} in ${cities.name}
+                ${currentPetWalker.name} in ${walkerCurrentCity.name}
             </li>
         `
     }
